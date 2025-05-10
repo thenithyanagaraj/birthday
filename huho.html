@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Akaash Incident</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #000000;
+      color: #ff4c4c;
+      overflow: hidden;
+    }
+
+    main {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+    }
+
+    .scene {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      padding: 2rem;
+      transition: all 1s ease-in-out;
+    }
+
+    .scene.show {
+      display: flex;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 0.5em 0;
+      font-family: 'Special Elite', cursive;
+      color: #ff1a1a;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      margin: 0.5em 0;
+      font-family: 'Special Elite', cursive;
+      color: #ff3333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.2em;
+      color: #ff6666;
+      animation: bounceIn 0.8s ease-in-out;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      background-color: #cc0000;
+      color: #ffffff;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px #ff1a1a;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #990000;
+      box-shadow: 0 0 15px #ff4c4c;
+    }
+
+    .animate {
+      animation: fadeInZoom 1s forwards;
+    }
+
+    @keyframes fadeInZoom {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: translateY(50%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="scene1" class="scene show animate">
+      <h1>"🗃️ Morning. Or should I say… the day Akaash forgot I existed."</h1>
+      <p>🌞 The birds sang. The sun rose. My phone? As empty as Akaash's memory of me.</p>
+      <p>💻 He's becoming a full stack developer now — climbing the tech ladder one forgotten friend at a time.</p>
+      <p>🎩 And let's be honest: if he becomes director, CEO, or president? He’ll forget my existence like a deprecated function.</p>
+      <button onclick="nextScene()">🕹️ Proceed with the heartbreak</button>
+    </section>
+
+    <section id="scene2" class="scene">
+      <h2>⏱️ Time since I was last acknowledged by Sir Akaash the Forgetful:</h2>
+      <p id="countdown"></p>
+      <button onclick="nextScene()">🕰 It's basically a lifetime</button>
+    </section>
+
+    <section id="scene3" class="scene">
+      <h2>✨ What I naively envisioned:</h2>
+      <ul>
+        <li>A charming “Good morning, sunshine!”</li>
+        <li>Perhaps even a rogue emoji 🥰</li>
+        <li>A sign that I exist in this universe 🚀</li>
+      </ul>
+      <h2>❌ What I got instead:</h2>
+      <ul>
+        <li>Radio silence. 🔇</li>
+        <li>Not a peep. Not a ping. 📽️</li>
+        <li>He may have joined a monastery. Who knows? ⛪</li>
+      </ul>
+      <button onclick="nextScene()">🥇 Let’s applaud the loyal ones</button>
+    </section>
+
+    <section id="scene4" class="scene">
+      <h2>👏 They remembered me, Akaash. THEY DID:</h2>
+      <ul>
+        <li>My alarm clock (faithful as ever) ⏰</li>
+        <li>The neighbour’s cat (judgemental but present) 🐱</li>
+        <li>Me. I remembered me. ✨</li>
+      </ul>
+      <h3>⚡ Now entering: The Hall of Shame</h3>
+      <ul>
+        <li>Akaash. Lost to the sands of memory. 🏜️</li>
+      </ul>
+      <button onclick="nextScene()">🤷 Can we fix him? Let’s try.</button>
+    </section>
+
+    <section id="scene5" class="scene">
+      <h2>📢 Messages Akaash <em>could</em> have sent, if he weren’t a ghost</h2>
+      <p id="messageBox">🕵️ Go on, hit the button. Let’s imagine a universe where he tried.</p>
+      <button onclick="generateMessage()">📬 Generate imaginary message</button>
+      <button onclick="nextScene()">📝 To the confessional, sinner</button>
+    </section>
+
+    <section id="scene6" class="scene">
+      <h2>🎮 State your case, Akaash.</h2>
+      <form onsubmit="submitForm(event)">
+        <label>💀 Why did you ghost me harder than a Victorian séance?</label><br>
+        <input type="text" required><br>
+
+        <label>🔹 On a scale from “Oops” to “Utter villainy”, how guilty are you?</label><br>
+        <input type="number" min="1" max="10" required><br>
+
+        <label>📝 Express your regret in haiku form. Yes, seriously.</label><br>
+        <textarea required></textarea><br>
+
+        <button type="submit">🫣 Submit your pitiful excuse</button>
+      </form>
+      <p id="formResponse" style="display:none;">👎 We appreciate your effort. Unfortunately, forgiveness is out of stock.</p>
+      <button onclick="nextScene()">🚩 Brace for the final burn</button>
+    </section>
+
+    <section id="scene7" class="scene">
+      <h1>🤔 Oh don’t worry, Akaash. I’m completely unbothered.</h1>
+      <p>🪶 I mean, sure, I built a whole website about it — but no big deal.<br><em>🙄 It’s not like I’m keeping score. (I am.)</em></p>
+      <small>💣 This site will vanish the moment Akaash sends a morning text. So… probably immortal, then.</small><br>
+      <button onclick="restart()">🔄 Start Again (for self-care)</button>
+    </section>
+  </main>
+  <script>
+    let currentScene = 1;
+
+    function nextScene() {
+      document.getElementById(`scene${currentScene}`).classList.remove("show");
+      currentScene++;
+      const next = document.getElementById(`scene${currentScene}`);
+      next.classList.add("show", "animate");
+      if (currentScene === 2) startCountdown();
+    }
+
+    function restart() {
+      document.querySelectorAll('.scene').forEach(scene => scene.classList.remove("show"));
+      currentScene = 1;
+      document.getElementById('scene1').classList.add("show", "animate");
+    }
+
+    function generateMessage() {
+      const messages = [
+        "Morning! Just remembered you exist. Wild, right?",
+        "Sorry, was busy forgetting you existed. Fixed now.",
+        "Hey, turns out I have a phone. Who knew?",
+        "Top of the morning to you! Better late than ghosted.",
+        "Oops, my bad. I thought 'no communication' was our thing.",
+        "You wouldn’t believe how not-texting became my full-time job.",
+        "Ah yes, the traditional silent treatment. So heartfelt.",
+        "Texting you now because guilt is louder than silence.",
+        "Akaash.exe has rebooted. Apologies for the outage.",
+        "This message is brought to you by basic decency — finally."
+      ];
+
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      const box = document.getElementById("messageBox");
+      box.classList.add("shake");
+      box.textContent = "";
+      let i = 0;
+      const typer = setInterval(() => {
+        box.textContent += msg[i++];
+        if (i === msg.length) {
+          clearInterval(typer);
+          box.classList.remove("shake");
+        }
+      }, 40);
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById("formResponse").style.display = "block";
+    }
+
+    function startCountdown() {
+      const now = new Date();
+      const may10 = new Date(now.getFullYear(), 4, 10, 0, 0, 0); // May = 4 (0-indexed)
+      const diff = now - may10;
+
+      if (diff < 0) {
+        document.getElementById("countdown").textContent = "⏳ Waiting for May 10, 12 AM...";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * s24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").textContent =
+        `${days}d ${hours}h ${minutes}m ${seconds}s of chilling silence.`;
+
+      setTimeout(startCountdown, 1000);
+    }
+  </script>
+</body>
+</html>
