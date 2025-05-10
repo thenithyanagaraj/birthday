@@ -234,6 +234,7 @@ input, textarea {
   </main>
   <script>
     let currentScene = 1;
+    let typingInterval;
 
     function nextScene() {
       document.getElementById(`scene${currentScene}`).classList.remove("show");
@@ -251,31 +252,36 @@ input, textarea {
 
     function generateMessage() {
       const messages = [
-       "Morning! Just remembered you exist. Wild, right?",
-        "Sorry, was busy forgetting you existed. Fixed now.",
-        "Hey, turns out I have a phone. Who knew?",
-        "Top of the morning to you! Better late than ghosted.",
-        "Oops, my bad. I thought 'no communication' was our thing.",
-        "You wouldn’t believe how not-texting became my full-time job.",
-        "Ah yes, the traditional silent treatment. So heartfelt.",
-        "Texting you now because guilt is louder than silence.",
-        "Akaash.exe has rebooted. Apologies for the outage.",
-        "This message is brought to you by basic decency — finally."
-      ];
+  "I’ve been meaning to reply since the dinosaurs went extinct. Here it is!",
+  "Look, I’m not proud… but I am texting back, and that’s growth, right?",
+  "Hey, remember me? That friend who disappeared mid-convo like a Netflix cliffhanger.",
+  "I swear I thought I replied. In my head. Spiritually.",
+  "I ghosted, but like, with a touch of flair and self-loathing.",
+  "Returning from the land of forgotten texts with guilt and memes.",
+  "I fully deserve side-eye for this delay. Go ahead, I’ll wait.",
+  "Late? Yes. Regretful? Slightly. Still funny? Debatable.",
+  "Your message aged like fine wine… and I aged while ignoring it.",
+  "This is me pretending it hasn’t been *that* long since I replied. Just go with it."
+];
 
-      const msg = messages[Math.floor(Math.random() * messages.length)];
-      const box = document.getElementById("messageBox");
+  const msg = messages[Math.floor(Math.random() * messages.length)];
+  const box = document.getElementById("messageBox");
+
+  if (typingInterval) clearInterval(typingInterval);
+
+  box.textContent = ""; // Reset message
+  let i = 0;
+  typingInterval = setInterval(() => {
+    box.textContent += msg[i];
+    i++;
+    if (i === msg.length) {
+      clearInterval(typingInterval);
       box.classList.add("shake");
-      box.textContent = "";
-      let i = 0;
-      const typer = setInterval(() => {
-        box.textContent += msg[i++];
-        if (i === msg.length) {
-          clearInterval(typer);
-          box.classList.remove("shake");
-        }
-      }, 40);
+      setTimeout(() => box.classList.remove("shake"), 500);
     }
+  }, 40);
+}
+
 
     function submitForm(e) {
       e.preventDefault();
@@ -284,24 +290,18 @@ input, textarea {
 
     function startCountdown() {
       const now = new Date();
-      const may10 = new Date(now.getFullYear(), 4, 10, 0, 0, 0); // May = 4 (0-indexed)
+      const may10 = new Date(now.getFullYear(), 4, 10, 0, 0, 0);
       const diff = now - may10;
-
       if (diff < 0) {
         document.getElementById("countdown").textContent = "⏳ Waiting for May 10, 12 AM...";
         return;
       }
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
       document.getElementById("countdown").textContent =
         `${days}d ${hours}h ${minutes}m ${seconds}s of chilling silence.`;
-
       setTimeout(startCountdown, 1000);
     }
   </script>
-</body>
-</html>
