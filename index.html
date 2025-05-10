@@ -7,96 +7,151 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Playfair Display', serif;
-      background-color: #000000;
-      color: #ff4c4c;
-      overflow: hidden;
-    }
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: #000000;
+  color: #ff4c4c;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
-    main {
-      height: 100vh;
-      width: 100%;
-      position: relative;
-    }
+main {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
 
-    .scene {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh;
-      padding: 2rem;
-      transition: all 1s ease-in-out;
-    }
+.scene {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: all 1s ease-in-out;
+}
 
-    .scene.show {
-      display: flex;
-    }
+.scene.show {
+  display: flex;
+}
 
-    h1 {
-      font-size: 2.5em;
-      margin: 0.5em 0;
-      font-family: 'Special Elite', cursive;
-      color: #ff1a1a;
-    }
+h1, h2 {
+  font-size: 2.2em;
+  margin: 0.5em 0;
+  font-family: 'Special Elite', cursive;
+  color: #ff1a1a;
+}
 
-    h2 {
-      font-size: 2.5em;
-      margin: 0.5em 0;
-      font-family: 'Special Elite', cursive;
-      color: #ff3333;
-    }
+ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2em;
+  color: #ff6666;
+  animation: bounceIn 0.8s ease-in-out;
+  margin: 1em 0;
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.2em;
-      color: #ff6666;
-      animation: bounceIn 0.8s ease-in-out;
-    }
+button {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  background-color: #cc0000;
+  color: #ffffff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px #ff1a1a;
+  max-width: 90vw;
+}
 
-    button {
-      margin-top: 1.5rem;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 50px;
-      background-color: #cc0000;
-      color: #ffffff;
-      font-size: 1em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 12px #ff1a1a;
-    }
+button:hover {
+  transform: scale(1.05);
+  background-color: #990000;
+  box-shadow: 0 0 15px #ff4c4c;
+}
 
-    button:hover {
-      transform: scale(1.05);
-      background-color: #990000;
-      box-shadow: 0 0 15px #ff4c4c;
-    }
+form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
 
-    .animate {
-      animation: fadeInZoom 1s forwards;
-    }
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1em;
+}
 
-    @keyframes fadeInZoom {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
-    }
+.animate {
+  animation: fadeInZoom 1s forwards;
+}
 
-    @keyframes bounceIn {
-      0% { transform: translateY(50%); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
+@keyframes fadeInZoom {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-4px); }
-      75% { transform: translateX(4px); }
-    }
+@keyframes bounceIn {
+  0% { transform: translateY(50%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1, h2 {
+    font-size: 1.8em;
+  }
+
+  ul {
+    font-size: 1em;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1.5em;
+  }
+
+  ul {
+    font-size: 0.95em;
+  }
+
+  button {
+    font-size: 0.85em;
+    padding: 0.7rem 1.2rem;
+  }
+
+  form {
+    padding: 0 1rem;
+  }
+
+  input, textarea {
+    font-size: 0.95em;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -196,7 +251,7 @@
 
     function generateMessage() {
       const messages = [
-        "Morning! Just remembered you exist. Wild, right?",
+       "Morning! Just remembered you exist. Wild, right?",
         "Sorry, was busy forgetting you existed. Fixed now.",
         "Hey, turns out I have a phone. Who knew?",
         "Top of the morning to you! Better late than ghosted.",
